@@ -8,7 +8,7 @@ export class GameBoard {
 
 
 
-interface Move {
-    player: string;
+export interface Move {
+    player: number;
     spot:number;
 }

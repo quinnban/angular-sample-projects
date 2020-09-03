@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
+import {Move} from "../Classes/gameboard.class"
 
 @Component({
   selector: 'app-game-board',
@@ -7,15 +8,25 @@ import { Subject } from 'rxjs';
   styleUrls: ['./game-board.component.scss']
 })
 export class GameBoardComponent implements OnInit {
+  currentPlayer = 1;
   totalmoves = 9;
+  @Output() playerMadeMove: EventEmitter<Move> = new EventEmitter();
+  madeMove:Subject<Move> = new Subject();
   playerHoveringIn: Subject<number> = new Subject();
   playerHoveringOut: Subject<number> = new Subject();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   makeMove(sqaure){
+    let move: Move = {
+      player: this.currentPlayer,
+      spot: sqaure
+    }
+    this.madeMove.next(move);
+    this.playerMadeMove.emit(move);
     console.log(sqaure)
   }
   mouseIn(square){
