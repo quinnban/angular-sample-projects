@@ -1,5 +1,5 @@
 <div class="game-board">
     <div *ngFor="let item of [].constructor(9); let i = index">
-        <app-game-move [boardPlace]="i" [playerHoverIn]="playerHoveringIn" [playerHoverOut]="playerHoveringOut" (click)="makeMove(i)" (mouseover)='mouseIn(i)' (mouseout)='mouseOut(i)'></app-game-move>
+        <app-game-move [playerMadeMove]="madeMove" [boardPlace]="i" [currentPlayer]="currentPlayer" [playerHoverIn]="playerHoveringIn" [playerHoverOut]="playerHoveringOut" (click)="makeMove(i)" (mouseover)='mouseIn(i)' (mouseout)='mouseOut(i)'></app-game-move>
     </div>
 </div>
